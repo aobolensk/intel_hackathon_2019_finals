@@ -19,12 +19,11 @@ float sqr(float x) {
 }
 
 int main() {
-    std::ifstream data("data.txt");
     int n;
-    data >> n;
+    std::cin >> n;
     std::vector <float> v(2 * n);
     for (int i = 0; i < 2 * n; ++i) {
-        data >> v[i];
+        std::cin >> v[i];
     }
     // std::cout << std::endl;
     buffer <float, 1> a(v.data(), range<1>(2 * n));
@@ -71,7 +70,7 @@ int main() {
                 std::swap(p[1], p[60 - 1]);
                 float dist = 0.;
                 for (int i = 1; i < 60; ++i) {
-                    dist += sqr(A[2 * p[i]] - A[2 * p[i-1]]) + sqr(A[2 * p[i] + 1] - A[2 * p[i-1] + 1]);
+                    dist += sqrt(sqr(A[2 * p[i]] - A[2 * p[i-1]]) + sqr(A[2 * p[i] + 1] - A[2 * p[i-1] + 1]));
                 }
                 if (dist < MIN_RES[0]) {
                     for (int i = 0; i < n; ++i) {
