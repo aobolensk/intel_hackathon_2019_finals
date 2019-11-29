@@ -92,7 +92,7 @@ int main() {
         cpu_queue.wait();
         // std::cout << m_res << ": ";
         for (int i = 0; i < n; ++i) {
-            std::cout << result[i] << " ";
+            std::cout << result[i] << ",";
         }
         std::cout << std::endl;
     }
