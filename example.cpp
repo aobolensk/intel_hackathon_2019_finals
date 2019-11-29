@@ -33,8 +33,8 @@ int main() {
             for (int i = 0; i < 60; ++i) was[i] = 0;
                 was[0] = was[1] = 1;
                 std::swap(p[2], p[hh]);
-                std::swap(p[58], p[jj]);
-                if (lul == 1) std::swap(p[2], p[58]);
+                std::swap(p[59], p[jj]);
+                if (lul == 1) std::swap(p[2], p[59]);
                 int teq = p[2], next = -1;
                 std::vector<int>tmppath;
                 tmppath.push_back(teq);
@@ -61,6 +61,18 @@ int main() {
                 // std::cout << p[0] << " " << p[1] << " " << p[59] << std::endl;
                 global_dist += sqrt(sqr(v[2*p[1]]-v[2*p[59]]) + sqr(v[2*p[1]+1]-v[2*p[59]+1]));
                 if (global_dist < very_global_dist) {
+                    for(int i = 0; i < 58; i++) {
+                        std::cout<<tmppath[i]<<",";
+                    }
+                    std::cout << std::endl;
+                    very_global_dist = global_dist;
+                }
+                global_dist-=sqrt(sqr(v[2*p[0]]-v[2*p[2]]) + sqr(v[2*p[0]+1]-v[2*p[2]+1]));
+                global_dist-=sqrt(sqr(v[2*p[1]]-v[2*p[59]]) + sqr(v[2*p[1]+1]-v[2*p[59]+1]));
+                global_dist+=sqrt(sqr(v[2*p[0]]-v[2*p[59]])+ sqr(v[2*p[0]+1]-v[2*p[59]+1]));
+                global_dist+=sqrt(sqr(v[2*p[1]]-v[2*p[2]]) + sqr(v[2*p[1]+1]-v[2*p[2]+1]));
+                if(global_dist < very_global_dist) {
+                    reverse(tmppath.begin(), tmppath.end());
                     for(int i = 0; i < 58; i++) {
                         std::cout<<tmppath[i]<<",";
                     }
